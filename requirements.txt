@@ -5,3 +5,4 @@ python-datauri==0.2.6
 python-dateutil==2.7.0
 pytz==2020.1
 six==1.15.0
+xhtml2pdf=0.2.8
