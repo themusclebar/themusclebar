@@ -61,7 +61,7 @@ Members
         <th scope="col">Registration Date</th>
         <th scope="col">Start Date</th>
         <th scope="col">Subscription Upto</th>
-        <th scope="col">Subscription Type</th>
+        <th scope="col">Mobile Number</th>
         <th scope="col">Subscription Period</th>
         <th scope="col">Fees</th>
         <th scope="col">Delete User</th>
@@ -76,7 +76,7 @@ Members
         <td>{{ member.registration_date }}</td>
         <td>{{ member.start_date }}</td>
         <td>{{ member.registration_upto }}</td>
-        <td>{{ member.get_subscription_type_display }}</td>
+        <td>{{ member.mobile_number }}</td>
         <td>{{ member.subscription_period }} Months</td>
         <td>
           {% if member.fee_status == 'paid' %}
@@ -126,7 +126,7 @@ Members
             <th scope="col">Registration Date</th>
             <th scope="col">Start Date</th>
             <th scope="col">Subscription Upto</th>
-            <th scope="col">Subscription Type</th>
+            <th scope="col">Mobile Number</th>
             <th scope="col">Subscription Period</th>
             <th scope="col">Fees</th>
           </tr>
@@ -140,7 +140,7 @@ Members
             <td>{{ member.registration_date }}</td>
             <td>{{ member.start_date }}</td>
             <td>{{ member.registration_upto }}</td>
-            <td>{{ member.get_subscription_type_display }}</td>
+            <td>{{ member.mobile_number }}</td>
             <td>{{ member.subscription_period }} Months</td>
             <td>
               {% if member.fee_status == 'paid' %}
@@ -190,7 +190,7 @@ Members
             <th scope="col">Registration Date</th>
             <th scope="col">Start Date</th>
             <th scope="col">Subscription Upto</th>
-            <th scope="col">Subscription Type</th>
+            <th scope="col">Mobile Number</th>
             <th scope="col">Subscription Period</th>
             <th scope="col">Fees</th>
           </tr>
@@ -204,7 +204,7 @@ Members
             <td>{{ member.registration_date }}</td>
             <td>{{ member.start_date }}</td>
             <td>{{ member.registration_upto }}</td>
-            <td>{{ member.get_subscription_type_display }}</td>
+            <td>{{ member.mobile_number }}</td>
             <td>{{ member.subscription_period }} Months</td>
             <td>
               {% if member.fee_status == 'paid' %}
@@ -231,7 +231,7 @@ Members
             <th scope="col">Registration Date</th>
             <th scope="col">Start Date</th>
             <th scope="col">Subscription Upto</th>
-            <th scope="col">Subscription Type</th>
+            <th scope="col">Mobile Number</th>
             <th scope="col">Subscription Period</th>
             <th scope="col">Fees</th>
           </tr>
@@ -245,7 +245,7 @@ Members
             <td>{{ member.registration_date }}</td>
             <td>{{ member.start_date }}</td>
             <td>{{ member.registration_upto }}</td>
-            <td>{{ member.get_subscription_type_display }}</td>
+            <td>{{ member.mobile_number }}</td>
             <td>{{ member.subscription_period }} Months</td>
             <td>
               {% if member.fee_status == 'paid' %}
@@ -272,7 +272,7 @@ Members
             <th scope="col">Registration Date</th>
             <th scope="col">Start Date</th>
             <th scope="col">Subscription Upto</th>
-            <th scope="col">Subscription Type</th>
+            <th scope="col">Mobile Number</th>
             <th scope="col">Subscription Period</th>
             <th scope="col">Fees</th>
           </tr>
@@ -286,7 +286,7 @@ Members
             <td>{{ member.registration_date }}</td>
             <td>{{ member.start_date }}</td>
             <td>{{ member.registration_upto }}</td>
-            <td>{{ member.get_subscription_type_display }}</td>
+            <td>{{ member.mobile_number }}</td>
             <td>{{ member.subscription_period }} Months</td>
             <td>
               {% if member.fee_status == 'paid' %}

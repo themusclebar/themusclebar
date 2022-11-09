@@ -10,6 +10,7 @@ from django.core import serializers
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import connection
+from django.db.models import Q
 from django.db.models.signals import post_save
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render, reverse
@@ -70,7 +71,7 @@ def export_all(user_obj):
         "first_name",
         "last_name",
         "mobile_number",
-        "admitted_on",
+        "registration_date",
         "subscription_type",
         "batch",
     )
@@ -138,6 +139,9 @@ def members(request):
 
 def view_member(request):
     use_raw_query("Update members_member set stop = 1 where registration_upto<DATE()")
+    use_raw_query(
+        "Update members_member set fee_status = 'pending' where registration_upto<DATE()"
+    )
     view_all = Member.objects.order_by("first_name")
     paginator = Paginator(view_all, 100)
     try:
@@ -226,8 +230,11 @@ def search_member(request):
         search_form = SearchForm(request.POST)
         result = 0
         if search_form.is_valid():
-            first_name = request.POST.get("search")
-            result = Member.objects.filter(first_name__contains=first_name)
+            search_value = request.POST.get("search")
+            result = Member.objects.filter(
+                Q(first_name__contains=search_value)
+                | Q(mobile_number__contains=search_value)
+            )
 
         view_all = Member.objects.all()
         # get all members according to their batches
@@ -462,6 +469,7 @@ def update_member(request, id):
                     "last_name": user.last_name,
                     "dob": user.dob,
                     "unique_member_id": user.unique_member_id,
+                    "mobile_number": user.mobile_number,
                 }
             )
 
@@ -479,6 +487,7 @@ def update_member(request, id):
                     "last_name": user.last_name,
                     "dob": user.dob,
                     "unique_member_id": user.unique_member_id,
+                    "mobile_number": user.mobile_number,
                 }
             )
 
@@ -503,7 +512,7 @@ def update_member(request, id):
         object.last_name = request.POST.get("last_name")
         object.dob = request.POST.get("dob")
         object.unique_member_id = request.POST.get("unique_member_id")
-
+        object.mobile_number = request.POST.get("mobile_number")
         # for updating photo
         if "photo" in request.FILES:
             myfile = request.FILES["photo"]
@@ -533,6 +542,7 @@ def update_member(request, id):
                 "last_name": user.last_name,
                 "dob": user.dob,
                 "unique_member_id": user.unique_member_id,
+                "mobile_number": user.mobile_number,
             }
         )
 
@@ -580,6 +590,7 @@ def update_member(request, id):
                 "last_name": user.last_name,
                 "dob": user.dob,
                 "unique_member_id": user.unique_member_id,
+                "mobile_number": user.mobile_number,
             }
         )
         return render(
