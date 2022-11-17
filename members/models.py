@@ -70,7 +70,7 @@ class Member(models.Model):
         ("Subscription Period"),
         max_length=30,
         choices=SUBSCRIPTION_PERIOD_CHOICES,
-        default=SUBSCRIPTION_PERIOD_CHOICES[0][0],
+        default=SUBSCRIPTION_PERIOD_CHOICES[2][0],
     )
     amount = models.CharField(max_length=30)
     fee_status = models.CharField(
