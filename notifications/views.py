@@ -21,13 +21,13 @@ def notifications(request):
             batch="morning",
         )
         | Q(stop=1, batch="morning")
-    ).order_by("first_name")
+    ).order_by("-registration_upto")
     morning_members_today = Member.objects.filter(
         registration_upto__gte=datetime.datetime.now(),
         registration_upto__lte=datetime.date.today() + datetime.timedelta(days=2),
         notification=1,
         batch="morning",
-    ).order_by("first_name")
+    ).order_by("-registration_upto")
 
     evening_members_before = Member.objects.filter(
         Q(
@@ -36,13 +36,13 @@ def notifications(request):
             batch="evening",
         )
         | Q(stop=1, batch="evening")
-    ).order_by("first_name")
+    ).order_by("-registration_upto")
     evening_members_today = Member.objects.filter(
         registration_upto__gte=datetime.datetime.now(),
         registration_upto__lte=datetime.date.today() + datetime.timedelta(days=2),
         notification=1,
         batch="evening",
-    ).order_by("first_name")
+    ).order_by("-registration_upto")
     notification_count = get_notification_count()
     context = {
         "subs_end_today_count": notification_count,

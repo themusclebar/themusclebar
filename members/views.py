@@ -470,6 +470,7 @@ def update_member(request, id):
                     "dob": user.dob,
                     "unique_member_id": user.unique_member_id,
                     "mobile_number": user.mobile_number,
+                    "email": user.email,
                 }
             )
 
@@ -488,6 +489,7 @@ def update_member(request, id):
                     "dob": user.dob,
                     "unique_member_id": user.unique_member_id,
                     "mobile_number": user.mobile_number,
+                    "email": user.email,
                 }
             )
 
@@ -513,6 +515,7 @@ def update_member(request, id):
         object.dob = request.POST.get("dob")
         object.unique_member_id = request.POST.get("unique_member_id")
         object.mobile_number = request.POST.get("mobile_number")
+        object.email = request.POST.get("email")
         # for updating photo
         if "photo" in request.FILES:
             myfile = request.FILES["photo"]
@@ -543,6 +546,7 @@ def update_member(request, id):
                 "dob": user.dob,
                 "unique_member_id": user.unique_member_id,
                 "mobile_number": user.mobile_number,
+                "email": user.email,
             }
         )
 
@@ -591,6 +595,7 @@ def update_member(request, id):
                 "dob": user.dob,
                 "unique_member_id": user.unique_member_id,
                 "mobile_number": user.mobile_number,
+                "email": user.email,
             }
         )
         return render(
