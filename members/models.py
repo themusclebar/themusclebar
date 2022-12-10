@@ -198,6 +198,7 @@ class UpdateMemberInfoForm(forms.Form):
     unique_member_id = forms.CharField(max_length=50)
     mobile_number = forms.CharField(max_length=10)
     email = forms.CharField(max_length=50)
+    address = forms.CharField(max_length=300)
     photo = forms.FileField(label="Update Photo", required=False)
     dob = forms.DateField(
         widget=forms.DateInput(
